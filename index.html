@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" bd-data-theme="dark">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dish Creator</title>
     <link href="style.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
+
+    <form class="container">
+      <legend>Loaded Files</legend>
+      <label for="dishes-input" class="form-label">Current <code>dishes.json</code> File:</label>
+      <input name="dishes-file" id="dishes-input" type="file" accept="application/json" class="form-control"/>
+
+      <label for="ingredients-input" class="form-label">Current <code>ingredients.json</code> File:</label>
+      <input name="ingredients-file" id="ingredients-input" type="file" accept="application/json" class="form-control"/>
+    </form>
   
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="bootstrap.bundle.min.js"></script>
 
   </body>
 </html>

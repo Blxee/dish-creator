@@ -7,15 +7,23 @@
     <link href="style.css" rel="stylesheet">
     <link href="bootstrap.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="d-flex flex-column align-items-center m-3">
 
-    <form class="container">
+    <form class="container container-12 border rounded m-3 p-3 bg-light">
       <legend>Loaded Files</legend>
-      <label for="dishes-input" class="form-label">Current <code>dishes.json</code> File:</label>
-      <input name="dishes-file" id="dishes-input" type="file" accept="application/json" class="form-control"/>
+      <hr>
 
-      <label for="ingredients-input" class="form-label">Current <code>ingredients.json</code> File:</label>
-      <input name="ingredients-file" id="ingredients-input" type="file" accept="application/json" class="form-control"/>
+      <div class="border rounded p-2 d-flex flex-column gap-2">
+        <label for="dishes-input" class="form-label">Current <code>dishes.json</code> File:</label>
+        <input name="dishes-file" id="dishes-input" type="file" accept="application/json" class="form-control"/>
+        <button type="button" class="btn btn-outline-primary w-100">Download <code>dishes.json</code></button>
+      </div>
+
+      <div class="border rounded p-2 d-flex flex-column gap-2">
+        <label for="ingredients-input" class="form-label">Current <code>ingredients.json</code> File:</label>
+        <input name="ingredients-file" id="ingredients-input" type="file" accept="application/json" class="form-control"/>
+        <button type="button" class="btn btn-outline-primary w-100">Download <code>ingredients.json</code></button>
+      </div>
     </form>
   
     <script type="text/javascript" src="script.js"></script>

@@ -18,18 +18,19 @@
         <button type="button" class="btn btn-outline-primary w-100" disabled>Download <code>dishes.json</code></button>
       </div>
 
-      <div class="border rounded mt-2 p-2 d-flex flex-column gap-2">
+      <div class="border rounded m-2 p-2 d-flex flex-column gap-2">
         <label for="ingredients-file-input" class="form-label">Current <code>ingredients.json</code> File:</label>
         <input name="ingredients-file" id="ingredients-file-input" type="file" accept="application/json" class="form-control"/>
         <button type="button" class="btn btn-outline-primary w-100">Download <code>ingredients.json</code></button>
       </div>
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>
   
     <form id="dishes-form" class="container container-12 border rounded m-3 p-3 bg-light">
       <legend>Dishes</legend>
       <div class="position-relative w-100">
 
-        <ul class="position-absolute top-0 start-0 h-100 w-25 list-group list-group-flush w-25 border rounded-start overflow-scroll">
+        <ul class="position-absolute top-0 start-0 h-100 w-25 list-group list-group-flush w-25 border rounded-start overflow-y-scroll">
           <button type="button" class="list-group-item list-group-item-action">hello</button>
           <button type="button" class="list-group-item list-group-item-action">hello</button>
           <button type="button" class="list-group-item list-group-item-action">hello</button>
@@ -43,7 +44,8 @@
           <input name="name" id="name-input" type="text" class="form-control"/>
 
           <label for="ingredients-input" class="form-label">Ingredients</label>
-          <input name="ingredients" id="ingredients-input" type="text" class="form-control"/>
+          <input name="ingredients" id="ingredients-input" type="search" list="ingredients-list" class="form-control"/>
+          <datalist id="ingredients-list"></datalist>
 
           <label for="recipe-input" class="form-label">Recipe</label>
           <textarea name="recipe" id="recipe-input" rows="5" class="form-control"></textarea>

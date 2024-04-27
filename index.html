@@ -15,13 +15,13 @@
       <div class="border rounded p-2 d-flex flex-column gap-2">
         <label for="dishes-file-input" class="form-label">Current <code>dishes.json</code> File:</label>
         <input name="dishes-file" id="dishes-file-input" type="file" accept="application/json" class="form-control"/>
-        <button type="button" class="btn btn-outline-primary w-100" disabled>Download <code>dishes.json</code></button>
+        <button type="button" onclick="downloadDishes()" class="btn btn-outline-primary w-100">Download <code>dishes.json</code></button>
       </div>
 
       <div class="border rounded m-2 p-2 d-flex flex-column gap-2">
         <label for="ingredients-file-input" class="form-label">Current <code>ingredients.json</code> File:</label>
         <input name="ingredients-file" id="ingredients-file-input" type="file" accept="application/json" class="form-control"/>
-        <button type="button" class="btn btn-outline-primary w-100">Download <code>ingredients.json</code></button>
+        <button type="button" onclick="downloadIngredients()" class="btn btn-outline-primary w-100">Download <code>ingredients.json</code></button>
       </div>
       <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>

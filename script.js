@@ -1,5 +1,14 @@
+// ###################################
+// # Populate dishes and ingredients #
+// ###################################
+
 let dishes;
 let ingredients;
+
+const dishesData = localStorage.getItem('dishes');
+dishes = JSON.parse(dishesData);
+const ingredientsData = localStorage.getItem('ingredients');
+ingredients = JSON.parse(ingredientsData);
 
 // #########################
 // # File upload handeling #
@@ -57,6 +66,35 @@ function downloadDishes() {
 function downloadIngredients() {
   const data = localStorage.getItem('ingredients');
   anchor.href = 'data:text/json;charset:utf-8,' + encodeURIComponent(data);
-  anchor.download = `ingredients-${ingredients.keys().length}.json`;
+  anchor.download = `ingredients-${Object.keys(ingredients).length}.json`;
   anchor.click();
 }
+
+// #########################
+// # Dishes form handeling #
+// #########################
+
+const dishesForm = document.querySelector('#dishes-form');
+const dishesList = dishesForm.querySelector('#dishes-list');
+const dishListItem = dishesList.children[0];
+dishesList.removeChild(dishListItem);
+
+let selectedDishIdx = null;
+
+for (const [i, dish] of dishes.entries()) {
+  const item = dishListItem.cloneNode();
+  item.textContent = dish.name;
+  item.setAttribute('data-dish-index', i);
+  item.addEventListener('click', onDishClicked);
+  dishesList.appendChild(item);
+}
+
+function onDishClicked(event) {
+  selectedDishIdx = event.target.getAttribute('data-dish-index');
+  const dish = dishes[selectedDishIdx];
+  dishesForm.elements['name'].value = dish.name;
+}
+
+dishesForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+});

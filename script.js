@@ -1,3 +1,6 @@
+let dishes;
+let ingredients;
+
 // #########################
 // # File upload handeling #
 // #########################
@@ -19,17 +22,21 @@ filesForm.addEventListener('submit', (event) => {
 });
 
 function loadDishes(file) {
-  loadFile(file, 'dishes');
+  const reader = new FileReader();
+  reader.onload = (event) => {
+    const content = event.target.result;
+    dishes = JSON.parse(content);
+    localStorage.setItem('dishes', content);
+  };
+  reader.readAsText(file);
 }
 
 function loadIngredients(file) {
-  loadFile(file, 'ingredients');
-}
-
-function loadFile(file, name) {
   const reader = new FileReader();
   reader.onload = (event) => {
-    localStorage.setItem(name, event.target.result);
+    const content = event.target.result;
+    ingredients = JSON.parse(content);
+    localStorage.setItem('ingredients', content);
   };
   reader.readAsText(file);
 }
@@ -43,13 +50,13 @@ const anchor = document.createElement('a')
 function downloadDishes() {
   const data = localStorage.getItem('dishes');
   anchor.href = 'data:text/json;charset:utf-8,' + encodeURIComponent(data);
-  anchor.download = 'dishes.json';
+  anchor.download = `dishes-${dishes.length}.json`;
   anchor.click();
 }
 
 function downloadIngredients() {
   const data = localStorage.getItem('ingredients');
   anchor.href = 'data:text/json;charset:utf-8,' + encodeURIComponent(data);
-  anchor.download = 'ingredients.json';
+  anchor.download = `ingredients-${ingredients.keys().length}.json`;
   anchor.click();
 }

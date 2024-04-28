@@ -36,19 +36,59 @@
 
         <div style="margin-left: 25%" class="w-75 border rounded-end p-2 d-flex flex-column gap-2">
           <label for="name-input" class="form-label">Name</label>
-          <input name="name" id="name-input" type="text" class="form-control"/>
+          <input name="name" id="name-input" type="text" placeholder="Dish name" class="form-control" required/>
 
-          <label for="ingredients-input" class="form-label">Ingredients</label>
+          <label for="ingredients-input" class="form-label mt-3">Ingredients</label>
           <input name="ingredients" id="ingredients-input" type="search" list="ingredients-list" class="form-control"/>
           <datalist id="ingredients-list"></datalist>
 
-          <label for="recipe-input" class="form-label">Recipe</label>
-          <textarea name="recipe" id="recipe-input" rows="5" class="form-control"></textarea>
+          <label for="recipe-input" class="form-label mt-3" required>Recipe *</label>
+          <textarea name="recipe" id="recipe-input" rows="5" placeholder="Dish recipe" class="form-control"></textarea>
 
-          <label for="picture-input" class="form-label">Picture</label>
-          <input name="picture" id="picture-input" type="file" accept="image/*" class="form-control"/>
+          <label for="dish-picture-input" class="form-label mt-3">Picture</label>
+          <input name="picture" id="dish-picture-input" type="file" accept="image/*" class="form-control"/>
 
-          <button type="submit" class="btn btn-outline-primary w-100">Submit</button>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
+        </div>
+
+      </div>
+    </form>
+
+    <form id="ingredients-form" class="container container-12 border rounded m-3 p-3 bg-light">
+      <legend>Ingredients</legend>
+      <div class="position-relative w-100">
+
+        <ul id="ingredients-list" class="position-absolute top-0 start-0 h-100 w-25 list-group list-group-flush w-25 border rounded-start overflow-y-scroll">
+          <button type="button" class="list-group-item list-group-item-action">hello</button>
+        </ul>
+
+        <div style="margin-left: 25%" class="w-75 border rounded-end p-2 d-flex flex-column gap-2">
+          <label for="id-input" class="form-label">Id</label>
+          <input name="id" id="id-input" type="number" class="form-control"/>
+
+          <label for="name-input" class="form-label mt-3">Name *</label>
+          <input name="name" id="name-input" type="text" class="form-control" placeholder="Ingredient name" required/>
+
+          <div class="w-100 d-flex flex-row justify-content-between gap-3">
+            <div class="w-50">
+              <label for="type-input" class="form-label mt-3">Type *</label>
+              <select name="type" id="type-input" class="form-select" required>
+                <option value="val">Type</option>
+              </select>
+            </div>
+            <div class="w-50">
+              <label for="new-type-input" class="form-label mt-3 d-block">Add new type</label>
+              <div class="d-flex">
+                <input name="new-type" id="new-type-input" type="text" placeholder="Type name" class="form-control d-inline"/>
+                <button type="button" class="btn btn-outline-primary d-inline ms-2">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <label for="ingredient-picture-input" class="form-label mt-3">Picture</label>
+          <input name="picture" id="ingredient-picture-input" type="file" accept="image/*" class="form-control"/>
+
+          <button type="submit" onclick="createNewType()" class="btn btn-primary w-100 mt-3">Submit</button>
         </div>
 
       </div>

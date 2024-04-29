@@ -38,12 +38,23 @@
         </ul>
 
         <div style="margin-left: 25%" class="w-75 border rounded-end p-2 d-flex flex-column gap-2">
-          <label for="name-input" class="form-label">Name</label>
+          <label for="name-input" class="form-label">Name *</label>
           <input name="name" id="name-input" type="text" placeholder="Dish name" class="form-control" required/>
 
           <label for="ingredients-input" class="form-label mt-3">Ingredients</label>
-          <input name="ingredients" id="ingredients-input" type="search" list="ingredients-list" class="form-control"/>
-          <datalist id="ingredients-list"></datalist>
+          <div class="input-group">
+            <input name="ingredients" id="ingredients-input" type="search" list="ingredients-suggestions" placeholder="Search ingredients" class="form-control"/>
+            <button type="button" class="btn btn-success px-2" disabled><img src="images/plus.svg" style="height: 1.5em;"/></button>
+          </div>
+          <datalist id="ingredients-suggestions"></datalist>
+
+          <div class="d-flex flex-column gap-2">
+            <div class="input-group">
+              <span class="input-group-text fw-bold">Ingredient</span>
+              <input type="text" name="amount" placeholder="Amount" class="form-control d-inline"/>
+              <button type="button" class="btn btn-danger"><img src="images/cancel.svg" style="height: 1em;"></button>
+            </div>
+          </div>
 
           <label for="recipe-input" class="form-label mt-3" required>Recipe *</label>
           <textarea name="recipe" id="recipe-input" rows="5" placeholder="Dish recipe" class="form-control"></textarea>
@@ -66,8 +77,8 @@
         </ul>
 
         <div style="margin-left: 25%" class="w-75 border rounded-end p-2 d-flex flex-column gap-2">
-          <label for="id-input" class="form-label">Id</label>
-          <input name="id" id="id-input" type="number" class="form-control"/>
+          <label for="id-input" class="form-label">Id *</label>
+          <input name="id" id="id-input" type="number" class="form-control" required/>
 
           <label for="name-input" class="form-label mt-3">Name *</label>
           <input name="name" id="name-input" type="text" class="form-control" placeholder="Ingredient name" required/>
@@ -83,7 +94,7 @@
               <label for="new-type-input" class="form-label mt-3 d-block">Add new type</label>
               <div class="d-flex">
                 <input name="new-type" id="new-type-input" type="text" placeholder="Type name" class="form-control d-inline"/>
-                <button type="button" class="btn btn-outline-primary d-inline ms-2">Add</button>
+                <button type="button" onclick="createNewType()" class="btn btn-outline-primary d-inline ms-2">Add</button>
               </div>
             </div>
           </div>
@@ -91,7 +102,7 @@
           <label for="ingredient-picture-input" class="form-label mt-3">Picture</label>
           <input name="picture" id="ingredient-picture-input" type="file" accept="image/*" class="form-control"/>
 
-          <button type="submit" onclick="createNewType()" class="btn btn-primary w-100 mt-3">Submit</button>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Submit</button>
         </div>
 
       </div>

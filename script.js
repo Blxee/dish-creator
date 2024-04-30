@@ -4,11 +4,22 @@
 
 let dishes;
 let ingredients;
+let types;
 
-const dishesData = localStorage.getItem('dishes');
-dishes = JSON.parse(dishesData);
-const ingredientsData = localStorage.getItem('ingredients');
-ingredients = JSON.parse(ingredientsData);
+function reloadDishes() {
+  const dishesData = localStorage.getItem('dishes');
+  dishes = JSON.parse(dishesData);
+}
+
+function reloadIngredients() {
+  const ingredientsData = localStorage.getItem('ingredients');
+  ingredients = JSON.parse(ingredientsData);
+
+  types = [...new Set(Object.values(ingredients).map((ingr) => ingr.type))];
+}
+
+reloadDishes();
+reloadIngredients();
 
 // #########################
 // # File upload handeling #
@@ -98,3 +109,20 @@ function onDishClicked(event) {
 dishesForm.addEventListener('submit', (event) => {
   event.preventDefault();
 });
+
+// #########################
+// # Dishes form handeling #
+// #########################
+
+const ingredientsForm = document.querySelector('#ingredients-form');
+const newTypeInput = ingredientsForm.querySelector('#new-type-input')
+
+function createNewType() {
+  const type = newTypeInput.value;
+
+  if (type.length > 0 && !types.includes(type)) {
+    types.push(type);
+    reloadIngredients();
+    newTypeInput.value = '';
+  }
+}

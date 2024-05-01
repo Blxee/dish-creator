@@ -6,18 +6,6 @@ let dishes;
 let ingredients;
 let types;
 
-function reloadDishes() {
-  const dishesData = localStorage.getItem('dishes');
-  dishes = JSON.parse(dishesData);
-}
-
-function reloadIngredients() {
-  const ingredientsData = localStorage.getItem('ingredients');
-  ingredients = JSON.parse(ingredientsData);
-
-  types = [...new Set(Object.values(ingredients).map((ingr) => ingr.type))];
-}
-
 reloadDishes();
 reloadIngredients();
 
@@ -110,14 +98,26 @@ dishesForm.addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
-// #########################
-// # Dishes form handeling #
-// #########################
+function reloadDishes() {
+  const dishesData = localStorage.getItem('dishes');
+  dishes = JSON.parse(dishesData);
+}
+
+// ##############################
+// # Ingredients form handeling #
+// ##############################
 
 const ingredientsForm = document.querySelector('#ingredients-form');
-const newTypeInput = ingredientsForm.querySelector('#new-type-input')
+const newTypeForm = ingredientsForm.querySelector('#new-type-form');
+const newTypeInput = newTypeForm.querySelector('#new-type-input')
 
-function createNewType() {
+ingredientsForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  alert('ingr')
+});
+
+newTypeForm.addEventListener('submit', (event) => {
+  event.preventDefault();
   const type = newTypeInput.value;
 
   if (type.length > 0 && !types.includes(type)) {
@@ -125,4 +125,11 @@ function createNewType() {
     reloadIngredients();
     newTypeInput.value = '';
   }
+});
+
+function reloadIngredients() {
+  const ingredientsData = localStorage.getItem('ingredients');
+  ingredients = JSON.parse(ingredientsData);
+
+  types = [...new Set(Object.values(ingredients).map((ingr) => ingr.type))];
 }

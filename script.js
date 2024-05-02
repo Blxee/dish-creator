@@ -109,10 +109,18 @@ function reloadDishes() {
 
 const ingredientsForm = document.querySelector('#ingredients-form');
 const newTypeInput = ingredientsForm.querySelector('#new-type-input')
+const typeInput = ingredientsForm.querySelector('#type-input');
+const typeOption = typeInput.children[0];
+typeInput.removeChild(typeOption);
 
 ingredientsForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  alert('ingr')
+  let s = ''
+  const formData = new FormData(event.target)
+  for (let [key, value] of formData.entries()) {
+    s += `key: ${key}, value: ${value}\n`
+  }
+  alert(s)
 });
 
 function createNewType() {
@@ -130,4 +138,10 @@ function reloadIngredients() {
   ingredients = JSON.parse(ingredientsData);
 
   types = [...new Set(Object.values(ingredients).map((ingr) => ingr.type))];
+  for (const type of types) {
+    const typeOption = typeOption.cloneNode();
+    typeOption.setAttribute('value', type);
+    typeOption.textContent = type;
+    typeInput.appendChild(typeOption);
+  }
 }

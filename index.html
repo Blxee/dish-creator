@@ -96,15 +96,13 @@
                 <option value="val">Type</option>
               </select>
             </div>
-            <form id="new-type-form" class="w-50">
-              <div>
-                <label for="new-type-input" class="form-label mt-3">Add new type</label>
-                <div class="d-flex">
-                  <input name="new-type" id="new-type-input" type="text" placeholder="Type name" class="form-control d-inline"/>
-                  <button type="submit" class="btn btn-outline-primary d-inline ms-2">Add</button>
-                </div>
+            <div class="w-50">
+              <label for="new-type-input" class="form-label mt-3">Add new type</label>
+              <div class="d-flex">
+                <input name="new-type" id="new-type-input" type="text" placeholder="Type name" class="form-control d-inline"/>
+                <button type="button" onclick="createNewType()" class="btn btn-outline-primary d-inline ms-2">Add</button>
               </div>
-            </form>
+            </div>
           </div>
 
           <label for="ingredient-picture-input" class="form-label mt-3">Picture</label>

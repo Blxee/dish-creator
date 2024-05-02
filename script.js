@@ -108,16 +108,14 @@ function reloadDishes() {
 // ##############################
 
 const ingredientsForm = document.querySelector('#ingredients-form');
-const newTypeForm = ingredientsForm.querySelector('#new-type-form');
-const newTypeInput = newTypeForm.querySelector('#new-type-input')
+const newTypeInput = ingredientsForm.querySelector('#new-type-input')
 
 ingredientsForm.addEventListener('submit', (event) => {
   event.preventDefault();
   alert('ingr')
 });
 
-newTypeForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+function createNewType() {
   const type = newTypeInput.value;
 
   if (type.length > 0 && !types.includes(type)) {
@@ -125,7 +123,7 @@ newTypeForm.addEventListener('submit', (event) => {
     reloadIngredients();
     newTypeInput.value = '';
   }
-});
+}
 
 function reloadIngredients() {
   const ingredientsData = localStorage.getItem('ingredients');
